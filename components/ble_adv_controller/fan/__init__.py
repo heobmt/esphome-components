@@ -26,6 +26,7 @@ BleAdvFan = bleadvcontroller_ns.class_('BleAdvFan', fan.Fan, BleAdvEntity)
 CONFIG_SCHEMA = cv.All(
     fan._FAN_SCHEMA.extend(
         {
+            cv.GenerateID(): cv.declare_id(Fan),
             cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(BleAdvFan),
             cv.Optional(CONF_BLE_ADV_SPEED_COUNT, default=6): cv.one_of(0,3,6),
             cv.Optional(CONF_BLE_ADV_DIRECTION_SUPPORTED, default=True): cv.boolean,
