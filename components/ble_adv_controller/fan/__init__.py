@@ -41,10 +41,6 @@ CONFIG_SCHEMA = cv.All(
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_OUTPUT_ID])
     await entity_base_code_gen(var, config, "fan")
-    from esphome.const import CONF_ID
-    if CONF_ID not in config:
-        # Create a default ID based on the component's type if one is missing
-        config[CONF_ID] = "ble_adv_fan" # Use a default unique name if possible
     await fan.register_fan(var, config)
     cg.add(var.set_speed_count(config[CONF_BLE_ADV_SPEED_COUNT]))
     cg.add(var.set_direction_supported(config[CONF_BLE_ADV_DIRECTION_SUPPORTED]))
