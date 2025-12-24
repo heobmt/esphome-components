@@ -21,7 +21,7 @@ from ..const import (
     CONF_BLE_ADV_FORCED_REFRESH_ON_START,
 )
 
-BleAdvFan = bleadvcontroller_ns.class_('BleAdvFan', fan.fan, BleAdvEntity)
+BleAdvFan = bleadvcontroller_ns.class_('BleAdvFan', fan.Fan, BleAdvEntity)
 
 CONFIG_SCHEMA = cv.All(
     fan.fan_schema(BleAdvFan).extend(
