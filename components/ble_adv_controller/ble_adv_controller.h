@@ -44,6 +44,8 @@ protected:
   BleAdvSelect: basic implementation of 'Select' to handle configuration choice from HA directly
  */
 class BleAdvSelect: public BleAdvDynConfig < select::Select > {
+public:
+  std::vector<std::string> options_storage_;
 protected:
   void control(const std::string &value) override;
   void sub_init() override;
