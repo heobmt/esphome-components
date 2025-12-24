@@ -24,7 +24,7 @@ from ..const import (
 BleAdvFan = bleadvcontroller_ns.class_('BleAdvFan', fan.Fan, BleAdvEntity)
 
 CONFIG_SCHEMA = cv.All(
-    fan._FAN_SCHEMA.extend(
+    fan.fan_schema(
         {
             cv.GenerateID(): cv.declare_id(Fan),
             cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(BleAdvFan),
