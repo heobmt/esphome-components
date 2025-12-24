@@ -41,7 +41,12 @@ void BleAdvNumber::sub_init() {
 }
 
 void BleAdvController::set_encoding_and_variant(const std::string & encoding, const std::string & variant) {
-  this->select_encoding_.traits.options = this->handler_->get_ids(encoding);
+  this->select_encoding_.options_storage_ = this->handler_->get_ids(encoding);
+  std::vector<const char*> search_opts;
+  for (auto & opt: this->select_encoding_.options_storage_) {
+    search_opts.push_back(opt.c_str());
+  }
+  this->select_encoding_.traits.set_options(search_opts);
   this->cur_encoder_ = this->handler_->get_encoder(encoding, variant);
   this->select_encoding_.state = this->cur_encoder_->get_id();
   this->select_encoding_.add_on_state_callback(std::bind(&BleAdvController::refresh_encoder, this, std::placeholders::_1, std::placeholders::_2));
