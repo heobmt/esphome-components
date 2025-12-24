@@ -14,7 +14,7 @@ class BleAdvFan : public fan::Fan, public BleAdvEntity
   void setup() override;
   void control(const fan::FanCall &call) override;
 
-  void set_speed_count(uint8_t speed_count) { this->traits_.set_supported_speed_count(speed_count); this->traits_.set_speed(speed_count > 0);}
+  void set_speed_count(uint8_t speed_count) { this->traits_.set_supported_speed_count(speed_count); }
   void set_direction_supported(bool use_direction) { this->traits_.set_direction(use_direction); }
   void set_oscillation_supported(bool use_oscillation) { this->traits_.set_oscillation(use_oscillation); }
   void set_forced_refresh_on_start(bool forced_refresh_on_start) { this->forced_refresh_on_start_ = forced_refresh_on_start; }
